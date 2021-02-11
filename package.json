@@ -1,0 +1,19 @@
+{
+  "name": "tv-shows-we-adore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Danielle van Graan",
+  "license": "FDA",
+  "dependecies": {},
+  "devDependencies": {},
+  "dependencies": {
+    "express.js": "^1.0.0",
+    "vue": "^2.6.12"
+  }
+}
