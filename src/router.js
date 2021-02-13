@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import AppContent from './theme/AppContent.vue'
-import Login from './theme/Login.vue'
-import NotFound from './theme/NotFound.vue'
+// import AppContent from './theme/AppContent.vue'
+// import Login from './theme/Login.vue'
+// import NotFound from './theme/NotFound.vue'
 
 Vue.use(VueRouter)
+
+const AppContent = () => System.import('./theme/AppContent.vue')
+const Login = () => System.import('./theme/Login.vue')
+const NotFound = () => System.import('./theme/NotFound.vue')
 
 export const router = new VueRouter({
   mode: 'history',
