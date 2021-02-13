@@ -1,3 +1,5 @@
+
+
 <template>
       <div id="app">
         <nav class="nav has-shadow">
@@ -9,20 +11,23 @@
           </div>
         </nav>
         <section class="main-section section"></section>
-        <footer class="footer">
-          <div class="container">
-            <div class="content has-text-centered">
-              Follow us on
-              <a href="http://api.tvmaze.com"
-              target="_blank">Maze Apis</a>
+        <div class="columns">
+        <div class="columns is-one-third" v-for="(post) in posts" v-bind:key="post.id">
+          <div class="card">
+            <div class="card-content">
+              <a class="card-footer-item" :href="post.url" target="_blank">{{post.name}}</a>
             </div>
-          </div>
-        </footer>
+        </div>
+        </div>
+        </div>
       </div>
 </template>
 <script>
+import {data} from '../../mock-data';
 export default {
-
+data() {
+  return {posts: data}
+}
 }
 </script>
 
