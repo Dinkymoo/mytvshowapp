@@ -9,7 +9,7 @@
   </nav>
 </template>
 <style scoped>
-.container, img {
+.container {
   text-align: center;
 }
 </style>
