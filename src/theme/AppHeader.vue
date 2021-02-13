@@ -8,6 +8,7 @@
       </div>
   </nav>
 </template>
+
 <style scoped>
 .container {
   text-align: center;

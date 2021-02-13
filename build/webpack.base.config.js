@@ -13,24 +13,25 @@ const config = {
         exclude: '/node-modules/',
       },
       {
-      test: /\.vue$/,
-      loader: 'vue-loader',
-      options: {
-        css: 'css-loader',
-       'scss': 'css-loader|sass-loader'
-      }
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          css: 'css-loader',
+        'scss': 'css-loader|sass-loader',
+        extractCSS : true
+        },
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: '/node-modules/'
-        },
+      },
     ],
   },
-  output: {
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/',
-    filename: 'assets/js/[name].js',
-  },
+    output: {
+      path: path.resolve(__dirname, '../dist'),
+      publicPath: '/',
+      filename: 'assets/js/[name].js',
+    },
 };
 module.exports = config;
