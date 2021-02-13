@@ -1,8 +1,8 @@
-const webpack = require("webpack");
-const clientConfig = require("./webpack.client.config");
+const webpack = require('webpack');
+const clientConfig = require('./webpack.client.config');
 module.exports = function setupDevServer(app) {
   clientConfig.entry.app = [
-    "webpack-hot-middleware/client",
+    'webpack-hot-middleware/client',
     clientConfig.entry.app,
   ];
   clientConfig.plugins.push(
@@ -11,11 +11,11 @@ module.exports = function setupDevServer(app) {
   );
   const clientCompliler = webpack(clientConfig);
   app.use(
-    require("webpack-dev-middleware")(clientCompliler, {
+    require('webpack-dev-middleware')(clientCompliler, {
       stats: {
         colors: true,
       },
     })
   );
-  app.use(require("webpack-hot-middleware")(clientCompliler));
+  app.use(require('webpack-hot-middleware')(clientCompliler));
 };
