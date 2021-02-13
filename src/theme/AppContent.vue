@@ -8,10 +8,10 @@
 </template>
 <script>
   import {data} from '../../mock-data';
-  import AppShow from './AppShow.vue';
+  import Show from './Show.vue';
 export default {
    components: {
-     'app-show': AppShow,
+     'app-show': Show,
    },
     data() {
       return {posts: data}
