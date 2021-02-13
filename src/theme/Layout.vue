@@ -33,4 +33,7 @@ data() {
 
 <style lang="scss">
 @import '~bulma';
+.columns{
+  flex-wrap : wrap
+  }
 </style>
