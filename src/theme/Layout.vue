@@ -1,37 +1,44 @@
 
-
 <template>
-      <div id="app">
-        <nav class="nav has-shadow">
-          <div class="container">
-            <a href="/">
-              <img src="https://static.tvmaze.com/images/tvm-header-logo.png"
-                alt="TV Maze" />
-            </a>
-          </div>
-        </nav>
-        <section class="main-section section"></section>
-        <div class="columns">
-        <div class="columns is-one-third" v-for="(post) in posts" v-bind:key="post.id">
-          <div class="card">
-            <div class="card-content">
-              <a class="card-footer-item" :href="post.url" target="_blank">{{post.name}}</a>
-            </div>
-        </div>
-        </div>
-        </div>
-      </div>
+    <div id="app">
+      <app-header></app-header>
+      <app-content></app-content>
+      <app-footer></app-footer>
+    </div>
 </template>
 <script>
-import {data} from '../../mock-data';
-export default {
-data() {
-  return {posts: data}
-}
-}
+
+  import AppHeader from './AppHeader.vue';
+  import AppContent from './AppContent.vue';
+  import AppFooter from './AppFooter.vue';
+  export default {
+    components: {
+      'app-header': AppHeader,
+      'app-content': AppContent,
+      'app-footer': AppFooter
+    }
+  }
 </script>
 
 <style lang="scss">
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+// Set your brand colors
+$yellow:#ffd200;
+$green: #007971;
+$light-green: #007971;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$primary: $green;
+
+// Update some of Bulma's component variables
+$control-border-width: 2px;
+$input-background-color: $light-green;
+$input-border-color: transparent;
+$input-shadow: none;
+
 @import '~bulma';
 .columns{
   flex-wrap : wrap
