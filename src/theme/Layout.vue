@@ -1,4 +1,3 @@
-
 <template>
     <div id="app">
       <app-header></app-header>
@@ -26,7 +25,7 @@ export default {
 $yellow:#ffd200;
 $green: #007971;
 $light-green: #007971;
-
+$purple: #6927a3;
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
 $primary: $green;
@@ -41,4 +40,7 @@ $input-shadow: none;
 .columns{
   flex-wrap : wrap
   }
+  .is-active {
+    background-color: purple;
+}
 </style>
