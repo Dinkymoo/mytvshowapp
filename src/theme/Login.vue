@@ -53,6 +53,7 @@
 </template>
 <script>
 import appService from '../app.service'
+import eventBus from '../event-bus'
 export default {
 data() {
   return {
@@ -86,6 +87,11 @@ methods: {
     if(expiration == null && parseInt(expiration) - unixTimeStamp > 0) {
       this.isAuthenticated = true
     }
+  }
+},
+  watch: {
+  isAuthenticated: function (val){
+    eventBus.$emit('authStatusUpdate',val)
   }
 }}
 </script>

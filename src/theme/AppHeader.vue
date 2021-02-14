@@ -4,7 +4,7 @@
           <img src="https://static.tvmaze.com/images/tvm-header-logo.png"
                 alt="TV Maze" class="nav-item is-tab" />
           <router-link to="/login" class="nav-item is-tab">
-            Login
+            <span v-if="isAuthenticated">Logout</span> <span v-else>Login</span>
           </router-link>
           <router-link :to="{name: 'content', params: {id: 'front-end'}}" class="nav-item is-tab">
             Frontend
@@ -15,7 +15,19 @@
       </div>
   </nav>
 </template>
-
+<script>
+import eventBus from '../event-bus'
+export default {
+  data() {
+    return {
+    isAuthenticated : false
+    }
+  },
+  created() {
+    eventBus.$on('authStatusUpdate', authenticated => { this.isAuthenticated = authenticated})
+  }
+}
+</script>
 <style scoped>
 
 .container {
