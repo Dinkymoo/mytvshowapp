@@ -7,7 +7,7 @@
       </div>
       <div class="media-content">
         <slot name="title"></slot>
-         <slot name="content"></slot>
+         <slot name="language"></slot>
       </div>
     </div>
 </div>
@@ -18,6 +18,6 @@
 export default {
   }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

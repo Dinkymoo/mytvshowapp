@@ -5,7 +5,7 @@
           <img slot="image" v-bind:src="show.image.medium"
                 alt="TV Maze" class="card-image" v-show="show.image.medium" />
           <p slot="title" class="title is-4">{{show.name}}</p>
-          <p class="subtitle is-6">{{show.language}}</p>
+          <p slot="language" class="subtitle is-6">{{show.language}}</p>
         </show>
     </div>
   </section>
@@ -46,5 +46,5 @@ export default {
     }
   }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 </style>

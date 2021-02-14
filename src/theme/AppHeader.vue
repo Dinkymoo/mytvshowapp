@@ -23,12 +23,26 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+$purple: #6927a3;
+$green: #6fb1d0;
+$light-green:#16978c;
 
+botton .button.is-primary {
+  color: $light-green;
+}
 .container {
   text-align: left;
+  padding: 22px 0;
+  margin: 0;
+  max-width: 0;
 }
 .nav-item {
+  color: $green;
   padding: 20px;
 }
+.is-active {
+  border-bottom-style: solid;
+}
+
 </style>
