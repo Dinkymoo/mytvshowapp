@@ -1,15 +1,17 @@
 <template>
   <section class="main-section section">
     <div class="columns " v-for="(show) in shows" v-bind:key="show.id">
-        <show :show="show" class="column">
+        <show :image="show.image" class="column">
+          <p slot="title" class="title is-4">{{show.name}}</p>
+          <p class="subtitle is-6">{{show.language}}</p>
         </show>
     </div>
   </section>
 </template>
 <script>
-  import {fdata} from '../../mock-fe-data';
-  import {mdata} from '../../mock-mobile-data';
-  import Show from './Show.vue';
+
+import Show from './Show.vue';
+import appService from '../app.service';
 export default {
    components: {
      'show': Show,
@@ -21,8 +23,10 @@ export default {
         }
     },
     methods: {
-      loadShows() {
+        loadShows() {
         console.log(this.$route.params.id)
+        //data can be different here based on id
+        appService.getShows().then(data => this.shows = data)
       }
     },
     created()  {
@@ -31,11 +35,9 @@ export default {
     watch : {
       '$route' (to, from) {
         if(to.params.id === 'front-end') {
-          this.shows = fdata
           this.loadShows()
         }
-        if(to.params.id === 'mobile') {
-          this.shows = mdata
+        if(to.params.id === 'mobile') {e
           this.loadShows()
         }
       }
