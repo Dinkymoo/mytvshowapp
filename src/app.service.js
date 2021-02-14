@@ -1,13 +1,13 @@
 import axios from 'axios'
 
 axios.defaults.baseURL = 'http://api.tvmaze.com/'
-axios.interceptors.request.use(function (config) {
-  const token = window.localStorage.getItem('token')
-  if (token) {
-    config.headers.Authorization = `bearer ${token}`
-  }
-  return config
-})
+// axios.interceptors.request.use(function (config) {
+//   const token = window.localStorage.getItem('token')
+//   if (token) {
+//     config.headers.Authorization = `bearer ${token}`
+//   }
+//   return config
+// })
 const appService = {
   getShows () {
     return new Promise((resolve, reject) => {
