@@ -16,15 +16,11 @@
   </nav>
 </template>
 <script>
-import eventBus from '../event-bus'
 export default {
-  data() {
-    return {
-    isAuthenticated : false
+  computed: {
+    isAuthenticated() {
+      return this.$store.state.isAuthenticated
     }
-  },
-  created() {
-    eventBus.$on('authStatusUpdate', authenticated => { this.isAuthenticated = authenticated})
   }
 }
 </script>
