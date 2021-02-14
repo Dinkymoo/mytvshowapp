@@ -37,7 +37,7 @@ export default {
         if(to.params.id === 'front-end') {
           this.loadShows()
         }
-        if(to.params.id === 'mobile') {e
+        if(to.params.id === 'mobile') {
           this.loadShows()
         }
       }
