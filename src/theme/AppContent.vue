@@ -1,7 +1,9 @@
 <template>
   <section class="main-section section">
     <div class="columns " v-for="(show) in shows" v-bind:key="show.id">
-        <show :image="show.image" class="column">
+        <show class="column">
+          <img slot="image" v-bind:src="show.image.medium"
+                alt="TV Maze" class="card-image" v-show="show.image.medium" />
           <p slot="title" class="title is-4">{{show.name}}</p>
           <p class="subtitle is-6">{{show.language}}</p>
         </show>
