@@ -2,10 +2,10 @@
 
 <div class="content">
   <div v-if="isAuthenticated">
-  Welcome {{username}}
-  <button v-on:click="logOut()" class="button is-primary">
+  Welcome
+  <button v-on:click="logout()" class="button is-primary">
 				Logout
-			  </button>
+	</button>
 </div>
 <div v-else>
 	<h2>Login</h2>
@@ -41,7 +41,7 @@
 		<div class="field-body">
 		  <div class="field">
 			<div class="control">
-			  <button v-on:click="logIn()" class="button is-primary">
+			  <button v-on:click="login()" class="button is-primary">
 				Login
 			  </button>
 			</div>
@@ -50,48 +50,28 @@
 	</div>
   </div>
 </div>
+
 </template>
 <script>
-import appService from '../app.service'
-import eventBus from '../event-bus'
-export default {
-data() {
-  return {
-    username: '',
-    password: '',
-    isAuthenticated: false
-  }
-},
-methods: {
-  logIn() {
-    appService.logIn({username: this.username,password: this.password})
-    .then((data) => {
-      window.localStorage.setItem('token',data.token)
-      window.localStorage.setItem('tokenExpiration',data.expiration)
-      this.isAuthenticated = true
-      this.password = ''
-    })
-    .catch(()=>
-    window.alert('Failed to log in'))
-  },
-  logOut() {
-      window.localStorage.setItem('token', null)
-      window.localStorage.setItem('tokenExpiration', null)
-      this.isAuthenticated = false;
-      this.username = ''
+import {mapGetters} from 'vuex'
+import {mapActions} from 'vuex'
 
+export default {
+  data() {return {username: '', password : ''}},
+  computed: {
+    ... mapGetters(['isAuthenticated'])
   },
-  created()  {
-    let expiration = window.localStorage.getItem('tokenExpiration')
-    let unixTimeStamp = new Date().getTime() /1000
-    if(expiration == null && parseInt(expiration) - unixTimeStamp > 0) {
-      this.isAuthenticated = true
+  methods: {
+     ... mapActions({
+    logout : 'logout',
+  }),
+  login() {
+      this.$store.dispatch('login',{username: this.username, password: this.password}).then(
+        this.password = ''
+      )
     }
   }
-},
-  watch: {
-  isAuthenticated: function (val){
-    eventBus.$emit('authStatusUpdate',val)
-  }
-}}
+}
 </script>
+
+

@@ -3,9 +3,7 @@
 <div class="card-content">
     <div class="media">
       <div class="media-left">
-        <figure class="image is-48x48">
-          <img scr="image.medium.rendered" alt="show image"/>
-        </figure>
+           <slot name="image"></slot>
       </div>
       <div class="media-content">
         <slot name="title"></slot>
@@ -18,7 +16,6 @@
 
 <script>
 export default {
-  props: ['image']
   }
 </script>
 <style scoped>
