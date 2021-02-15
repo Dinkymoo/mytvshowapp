@@ -5,7 +5,9 @@ import appService from './app.service'
 Vue.use(Vuex)
 
 const state = {
-  isAuthenticated: false
+  isAuthenticated: false,
+  shows: [],
+  selectedGenres: []
 
 }
 const store = new Vuex.Store({
@@ -13,6 +15,12 @@ const store = new Vuex.Store({
   getters: {
     isAuthenticated: (state) => {
       return state.isAuthenticated
+    },
+    shows: (state) => {
+      return state.shows
+    },
+    selectedGenres: (state) => {
+      return state.selectedGenres
     }
   },
   actions: {
@@ -28,6 +36,30 @@ const store = new Vuex.Store({
           })
           .catch((err) => reject(err))
       })
+    },
+    updateshows (context, keyword) {
+      return new Promise((resolve, reject) => {
+        if (keyword === '' || keyword === undefined || keyword === null) {
+          appService.getShows()
+            .then((shows) => {
+              console.log(shows)
+              context.commit('updateshows', shows)
+              resolve(shows)
+            })
+            .catch((err) => reject(err))
+        } else {
+          appService.searchShows(keyword)
+            .then((shows) => {
+              console.log(shows)
+              context.commit('updateshows', shows)
+              resolve(shows)
+            })
+            .catch((err) => reject(err))
+        }
+      })
+    },
+    selectedGenres (context) {
+      context.commit('selectedGenres')
     }
   },
   mutations: {
@@ -40,6 +72,12 @@ const store = new Vuex.Store({
       window.localStorage.setItem('token', token.token)
       window.localStorage.setItem('tokenExpiration', token.expiration)
       state.isAuthenticated = true
+    },
+    updateshows (state, shows) {
+      state.shows = shows
+    },
+    selectedGenres (state, selectedGenres) {
+      state.selectedGenres = selectedGenres
     }
   }
 })
@@ -48,6 +86,10 @@ if (typeof window !== 'undefined') {
     let expiration = window.localStorage.getItem('tokenExpiration')
     let unixTimeStamp = new Date().getTime() / 1000
     if (expiration == null && parseInt(expiration) - unixTimeStamp > 0) { store.state.isAuthenticated = true }
+    appService.getShows().then((shows) => {
+      store.state.shows = shows
+    })
+    store.state.genres = 'All'
   })
 }
 export default store
