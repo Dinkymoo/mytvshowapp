@@ -1,8 +1,8 @@
 <template>
   <nav class="nav">
       <div class="container">
-          <img src="https://static.tvmaze.com/images/tvm-header-logo.png"
-                alt="TV Maze" class="nav-item is-tab" />
+          <img src="http://www.thepugdiary.com/wp-content/uploads/2015/07/Dollarphotoclub_73151926.jpg"
+                alt="TV Maze" class="nav-item is-tab" id="menu-image"/>
           <router-link to="/login" class="nav-item is-tab">
             <span v-if="isAuthenticated">Logout</span> <span v-else>Login</span>
           </router-link>
@@ -17,19 +17,17 @@
 </template>
 <script>
  import {mapGetters} from 'vuex';
-export default {
+  export default {
   computed: {
       ... mapGetters(['isAuthenticated'])
   }
 }
 </script>
 <style lang="scss" scoped>
-$purple: #6927a3;
-$green: #6fb1d0;
-$light-green:#16978c;
+$red: #f41231;
 
 botton .button.is-primary {
-  color: $light-green;
+  color: $red;
 }
 .container {
   text-align: left;
@@ -38,11 +36,14 @@ botton .button.is-primary {
   max-width: 0;
 }
 .nav-item {
-  color: $green;
+  color: $red;
   padding: 20px;
 }
 .is-active {
   border-bottom-style: solid;
+}
+#menu-image {
+  width: 25%;
 }
 
 </style>
