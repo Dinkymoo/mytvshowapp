@@ -22,6 +22,22 @@ const appService = {
       // backend call to login
       resolve({token: '1507361352', tokenExpiry: 'a-valid-token'})
     })
+  },
+  searchShows (query) {
+    return new Promise((resolve, reject) => {
+      axios.get(`search/shows?q=${query}`).then(
+        response => {
+          resolve(response.data)
+        }).catch(response => reject(response.status))
+    })
+  },
+  showDetails (id) {
+    return new Promise((resolve, reject) => {
+      axios.get(`shows/${id}`).then(
+        response => {
+          resolve(response.data)
+        }).catch(response => reject(response.status))
+    })
   }
 }
 export default appService
