@@ -6,8 +6,8 @@
            <slot name="image"></slot>
       </div>
       <div class="media-content">
-        <slot name="title"></slot>
-         <slot name="language"></slot>
+        <slot name="title" ></slot>
+
       </div>
     </div>
 </div>
