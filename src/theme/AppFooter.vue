@@ -3,7 +3,7 @@
 </template>
 
 <style lang="scss" scoped >
-$footer-background-color:  #dbf7f4;
+$footer-background-color:  #d59da0;
 .footer {
   background-color: $footer-background-color;
 }
