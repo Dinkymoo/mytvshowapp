@@ -39,14 +39,27 @@ const store = new Vuex.Store({
     },
     updateshows (context, keyword) {
       return new Promise((resolve, reject) => {
-        if (keyword === '' || keyword === undefined || keyword === null) {
+        let selectedShows = []
+        console.log('keyword', keyword)
+        if (keyword === undefined || state.selectedGenres === ['All']) {
+          console.log('getting all shows')
           appService.getShows()
-            .then((shows) => {
+            .then(shows => {
               console.log(shows)
               context.commit('updateshows', shows)
               resolve(shows)
             })
-            .catch((err) => reject(err))
+        } else if (typeof keyword !== 'string') {
+          appService.getShows()
+            .then(shows => shows
+              .forEach(show =>
+                state.selectedGenres
+                  .forEach(genre => {
+                    if (show['genres'].indexOf(genre) !== -1) { selectedShows.push(show) }
+                  }))).catch((err) => reject(err))
+          console.log(selectedShows)
+          context.commit('updateshows', selectedShows)
+          resolve(selectedShows)
         } else {
           appService.searchShows(keyword)
             .then((shows) => {
@@ -58,8 +71,9 @@ const store = new Vuex.Store({
         }
       })
     },
-    selectedGenres (context) {
-      context.commit('selectedGenres')
+
+    selectedGenres (context, selectedGenres) {
+      context.commit('selectedGenres', selectedGenres)
     }
   },
   mutations: {
@@ -83,13 +97,13 @@ const store = new Vuex.Store({
 })
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMCntentLoaded', function (event) {
+    store.state.selectedGenres = ['Drama, Horror']
     let expiration = window.localStorage.getItem('tokenExpiration')
     let unixTimeStamp = new Date().getTime() / 1000
     if (expiration == null && parseInt(expiration) - unixTimeStamp > 0) { store.state.isAuthenticated = true }
     appService.getShows().then((shows) => {
       store.state.shows = shows
     })
-    store.state.genres = 'All'
   })
 }
 export default store
