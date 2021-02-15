@@ -6,11 +6,8 @@
           <router-link to="/login" class="nav-item is-tab">
             <span v-if="isAuthenticated">Logout</span> <span v-else>Login</span>
           </router-link>
-          <router-link :to="{name: 'content', params: {id: 'front-end'}}" class="nav-item is-tab">
-            Frontend
-          </router-link>
-          <router-link :to="{name: 'content', params: {id: 'mobile'}}" class="nav-item is-tab">
-            Mobile
+          <router-link to="/content" class="nav-item is-tab">
+            Shows
           </router-link>
       </div>
   </nav>

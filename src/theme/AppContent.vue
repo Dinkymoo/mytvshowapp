@@ -11,6 +11,8 @@
                 alt="TV Maze" class="card-image" />
           <router-link :to="{name: 'details', params: {id: show.id}}" slot="title" class="title is-4" target="_blank">
           {{show.show.name}}
+           {{show.show.genres}}
+           {{show.show.rating}}
           </router-link>
         </show>
         <show class="column" v-else>
@@ -18,6 +20,8 @@
                 alt="TV Maze" class="card-image" />
           <router-link :to="{name: 'details', params: {id: show.id}}"  slot="title" class="title is-4" target="_blank">
           {{show.name}}
+          {{show.genres}}
+          {{show.rating}}
           </router-link>
         </show>
 
@@ -49,26 +53,10 @@ export default {
     },
     methods: {
       ... mapActions({
-      updateshows : 'updateshows'}),
-      loadShows() {
-          this.$store.dispatch('updateshows', undefined)
-      },
-      showDetails() {
-        console.log('xxxxxxxxxxxxxx')
-      }
+      updateshows : 'updateshows'})
     },
     created()  {
-     this.loadShows()
-    },
-    watch : {
-      '$route' (to, from) {
-        if(to.params.id === 'front-end') {
-          this.loadShows()
-        }
-        if(to.params.id === 'mobile') {
-          this.loadShows()
-        }
-      }
+     this.$store.dispatch('updateshows', undefined)
     }
   }
 </script>
