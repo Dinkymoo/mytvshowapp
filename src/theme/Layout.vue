@@ -22,17 +22,13 @@ export default {
 // Import a Google Font
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
-// brand colors
-$yellow:#ffd200;
-$purple: #6927a3;
-$light-green:#16978c;
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
-$primary: #007971;
+$primary: #f41231;
 
 // Update some of Bulma's component variables
 $control-border-width: 2px;
-$input-background-color:  #bde9e4;
+$input-background-color:  #f1d6da;
 $input-border-color: transparent;
 $input-shadow: none;
 
@@ -40,4 +36,5 @@ $input-shadow: none;
 .columns{
   flex-wrap : wrap
   }
+
 </style>
