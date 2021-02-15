@@ -17,6 +17,7 @@ export const router = new VueRouter({
   routes: [
     {path: '/', redirect: '/content/front-end'},
     {path: '/login', component: Login},
+    {path: '/content/details/:id', name: 'details', component: Details},
     {path: '/content/:id', name: 'content', component: AppContent},
     {path: '*', component: NotFound}
   ]
