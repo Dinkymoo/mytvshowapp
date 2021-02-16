@@ -16,7 +16,6 @@ export default {
   computed: {
     ... mapGetters(['shows'])
   },
-
   methods: {
      ... mapActions({
     updateshows : 'updateshows'}),

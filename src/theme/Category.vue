@@ -11,12 +11,9 @@
 </template>
 <script>
 
- import {mapGetters} from 'vuex';
   import {mapActions} from 'vuex';
   export default {
-  computed: {
-      ... mapGetters(['selectedGenres'])
-  },
+
   mapActions:{
       ... mapActions({
       updateGenres : 'updateGenres'}),
@@ -26,11 +23,8 @@
   methods:{
     toggleCategory(genre){
       this.$store.dispatch('updateGenres', genre)
-      this.$store.dispatch('updateshows', this.selectedGenres)
+      this.$store.dispatch('updateshows', undefined)
      }
-  },
-  created() {
-    this.$store.dispatch('selectedGenres', 'All')
   }
 }
 

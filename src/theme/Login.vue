@@ -1,5 +1,4 @@
 <template>
-
 <div class="content">
   <div v-if="isAuthenticated">
   Welcome
@@ -74,6 +73,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.content {
+  padding: 5%;
+}
 </style>
 

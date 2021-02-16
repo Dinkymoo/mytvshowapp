@@ -7,7 +7,8 @@ Vue.use(Vuex)
 const state = {
   isAuthenticated: false,
   shows: {'shows': []},
-  selectedGenres: {'genres': ['All']}
+  selectedGenres: {'genres': ['All']},
+  selectedScore: 0
 
 }
 const store = new Vuex.Store({
@@ -21,6 +22,9 @@ const store = new Vuex.Store({
     },
     selectedGenres: (state) => {
       return state.selectedGenres
+    },
+    selectedScore: (state) => {
+      return state.selectedScore
     }
   },
   actions: {
@@ -40,34 +44,42 @@ const store = new Vuex.Store({
     updateshows (context, keyword) {
       return new Promise((resolve, reject) => {
         let selectedShows = []
-        if (keyword === undefined || (keyword.genres && keyword.genres.indexOf('All') !== -1)) {
+        if (keyword === null || keyword === undefined) {
           appService.getShows()
             .then(shows => {
-              context.commit('updateshows', shows)
-              resolve(shows)
-            })
-        } else if (typeof keyword === 'object') {
-          appService.getShows().then(
-            shows =>
-              shows.forEach(show => {
-                if (show.genres.some(g => keyword.genres.indexOf(g) !== -1)) { selectedShows.push(show) }
-              })).catch((err) => reject(err))
-          context.commit('updateshows', selectedShows)
-          resolve(selectedShows)
+              if (state.selectedGenres.genres.indexOf('All') !== -1) {
+                shows.forEach(show => {
+                  if (Number.parseInt(show.rating.average) > state.selectedScore) { selectedShows.push(show) }
+                })
+              } else {
+                console.log('getting selected shows')
+                shows.forEach(show => {
+                  if (Number.parseInt(show.rating.average) > state.selectedScore &&
+                  show.genres.some(g => state.selectedGenres.genres.indexOf(g) !== -1)) { selectedShows.push(show) }
+                })
+              }
+            }).catch((err) => { console.log(err) })
         } else {
-          appService.searchShows(keyword)
-            .then((shows) => {
-              console.log(shows)
-              context.commit('updateshows', shows)
-              resolve(shows)
-            })
-            .catch((err) => reject(err))
+          appService.searchShows(keyword).then(shows =>
+            shows.forEach(show => {
+              if (state.selectedGenres.genres.indexOf('All') === -1) {
+                if (show.show.genres.some(g => state.selectedGenres.genres.indexOf(g) !== -1)) {
+                  selectedShows.push(show.show)
+                }
+              } else selectedShows.push(show.show)
+            }
+            ))
         }
+        context.commit('updateshows', selectedShows)
+        resolve(selectedShows)
       })
     },
-
     updateGenres (context, genre) {
       context.commit('updateGenres', genre)
+    },
+    updateScore (context, score) {
+      console.log(score)
+      context.commit('updateScore', score)
     }
   },
   mutations: {
@@ -86,12 +98,16 @@ const store = new Vuex.Store({
     },
     updateGenres (state, genre) {
       state.selectedGenres = { 'genres': [genre] }
+    },
+    updateScore (state, score) {
+      state.selectedScore = score
     }
   }
 })
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMCntentLoaded', function (event) {
-    state.selectedGenres = { 'genres': ['All'] }
+    store.state.selectedScore = 0
+    store.state.selectedGenres = {'genres': ['All']}
     let expiration = window.localStorage.getItem('tokenExpiration')
     let unixTimeStamp = new Date().getTime() / 1000
     if (expiration == null && parseInt(expiration) - unixTimeStamp > 0) { store.state.isAuthenticated = true }

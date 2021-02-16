@@ -1,8 +1,8 @@
 <template>
-    <div id="app">
-      <app-header></app-header>
+    <div id="app" class="colums">
+      <app-header class="column"></app-header>
       <router-view></router-view>
-      <app-footer></app-footer>
+      <app-footer  class="column"></app-footer>
     </div>
 </template>
 
@@ -28,7 +28,7 @@ $primary: #f41231;
 
 // Update some of Bulma's component variables
 $control-border-width: 2px;
-$input-background-color:  #f1d6da;
+$input-background-color:#ada6a7;
 $input-border-color: transparent;
 $input-shadow: none;
 

@@ -2,9 +2,10 @@
   <section class="main-section section">
     <div></div>
     <search class="columns"></search>
-    <div></div>
-    <category class="columns"></category>
-    <div></div>
+    <div class="columns">
+    <category class="column"></category>
+    <rating class="column"></rating>
+    </div>
     <div class="columns" v-for="show in shows['shows']" v-bind:key="show.id">
       <show class="column" v-if="show.show">
           <img v-if="show.show.image" slot="image" v-bind:src="show.show.image.medium"
@@ -35,13 +36,15 @@ import Details from './Details.vue';
 import Category from './Category.vue';
 import {mapGetters} from 'vuex'
 import {mapActions} from 'vuex'
+import Rating from './Rating.vue';
 
 export default {
    components: {
      'show': Show,
       'search': Search,
       'details': Details,
-      'category': Category
+      'category': Category,
+      Rating
    },
     computed: {
     ... mapGetters(["shows"])
@@ -56,7 +59,7 @@ export default {
       updateshows : 'updateshows'})
     },
     created()  {
-     this.$store.dispatch('updateshows', undefined)
+     this.$store.dispatch('updateshows',undefined)
     }
   }
 </script>
