@@ -6,8 +6,8 @@ Vue.use(Vuex)
 
 const state = {
   isAuthenticated: false,
-  shows: [],
-  selectedGenres: []
+  shows: {'shows': []},
+  selectedGenres: {'genres': ['All']}
 
 }
 const store = new Vuex.Store({
@@ -40,24 +40,18 @@ const store = new Vuex.Store({
     updateshows (context, keyword) {
       return new Promise((resolve, reject) => {
         let selectedShows = []
-        console.log('keyword', keyword)
-        if (keyword === undefined || state.selectedGenres === ['All']) {
-          console.log('getting all shows')
+        if (keyword === undefined || (keyword.genres && keyword.genres.indexOf('All') !== -1)) {
           appService.getShows()
             .then(shows => {
-              console.log(shows)
               context.commit('updateshows', shows)
               resolve(shows)
             })
-        } else if (typeof keyword !== 'string') {
-          appService.getShows()
-            .then(shows => shows
-              .forEach(show =>
-                state.selectedGenres
-                  .forEach(genre => {
-                    if (show['genres'].indexOf(genre) !== -1) { selectedShows.push(show) }
-                  }))).catch((err) => reject(err))
-          console.log(selectedShows)
+        } else if (typeof keyword === 'object') {
+          appService.getShows().then(
+            shows =>
+              shows.forEach(show => {
+                if (show.genres.some(g => keyword.genres.indexOf(g) !== -1)) { selectedShows.push(show) }
+              })).catch((err) => reject(err))
           context.commit('updateshows', selectedShows)
           resolve(selectedShows)
         } else {
@@ -72,8 +66,8 @@ const store = new Vuex.Store({
       })
     },
 
-    selectedGenres (context, selectedGenres) {
-      context.commit('selectedGenres', selectedGenres)
+    updateGenres (context, genre) {
+      context.commit('updateGenres', genre)
     }
   },
   mutations: {
@@ -88,21 +82,21 @@ const store = new Vuex.Store({
       state.isAuthenticated = true
     },
     updateshows (state, shows) {
-      state.shows = shows
+      state.shows['shows'] = shows
     },
-    selectedGenres (state, selectedGenres) {
-      state.selectedGenres = selectedGenres
+    updateGenres (state, genre) {
+      state.selectedGenres = { 'genres': [genre] }
     }
   }
 })
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMCntentLoaded', function (event) {
-    store.state.selectedGenres = ['Drama, Horror']
+    state.selectedGenres = { 'genres': ['All'] }
     let expiration = window.localStorage.getItem('tokenExpiration')
     let unixTimeStamp = new Date().getTime() / 1000
     if (expiration == null && parseInt(expiration) - unixTimeStamp > 0) { store.state.isAuthenticated = true }
     appService.getShows().then((shows) => {
-      store.state.shows = shows
+      store.state.shows['shows'] = shows
     })
   })
 }
