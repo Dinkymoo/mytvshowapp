@@ -40,7 +40,7 @@ botton .button.is-primary {
   border-bottom-style: solid;
 }
 #menu-image {
-  width: 25%;
+  width: 20%;
 }
 
 </style>

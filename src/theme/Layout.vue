@@ -22,6 +22,7 @@ export default {
 // Import a Google Font
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
+
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
 $primary: #f41231;

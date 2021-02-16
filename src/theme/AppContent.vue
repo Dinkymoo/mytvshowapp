@@ -1,7 +1,7 @@
 <template>
   <section class="main-section section">
     <div></div>
-    <search class="columns"></search>
+    <search id="search" class="columns"></search>
     <div class="columns">
     <category class="column"></category>
     <rating class="column"></rating>
@@ -67,5 +67,8 @@ export default {
 <style lang="scss" scoped>
 .card-image {
   max-width: 75%;
+}
+#search {
+  padding: 2%;
 }
 </style>

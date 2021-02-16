@@ -1,8 +1,12 @@
 <template>
     <div class="columns">
-      <input v-model="searchTerm" class="input column" type="text"
+      <div class="column">
+      <input v-model="searchTerm" class="input " type="text"
 			  placeholder="Search Term" />
-      <button v-on:click="searchShows()" class="button is-primary column is-one-third">Search</button>
+        </div>
+        <div class="column is-one-third">
+      <button v-on:click="searchShows()" class="button is-primary ">Search</button>
+      </div>
     </div>
 </template>
 <script>

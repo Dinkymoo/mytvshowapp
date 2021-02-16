@@ -1,11 +1,11 @@
 <template>
 <div class="columns">
-<button class="button category" v-on:click="toggleCategory('All')">All</button>
-<button class="button category" v-on:click="toggleCategory('Drama')">Drama</button>
-<button class="button category" v-on:click="toggleCategory('Science-Fiction')">Science-Fiction</button>
-<button class="button category" v-on:click="toggleCategory('Thriller')">Thriller</button>
-<button class="button category" v-on:click="toggleCategory('Horror')">Horror</button>
-<button class="button category" v-on:click="toggleCategory('Romance')">Romance</button>
+<button class="button is-primary category" v-on:click="toggleCategory('All')">All</button>
+<button class="button is-primary category" v-on:click="toggleCategory('Drama')">Drama</button>
+<button class="button is-primary category" v-on:click="toggleCategory('Science-Fiction')">Science-Fiction</button>
+<button class="button is-primary category" v-on:click="toggleCategory('Thriller')">Thriller</button>
+<button class="button is-primary category" v-on:click="toggleCategory('Horror')">Horror</button>
+<button class="button is-primary category" v-on:click="toggleCategory('Romance')">Romance</button>
 
 </div>
 </template>
