@@ -1,17 +1,7 @@
 <template>
-<div class="card">
-<div class="card-content">
-    <div class="media">
-      <div class="media-left">
-           <slot name="image"></slot>
-      </div>
-      <div class="media-content">
-        <slot name="title" ></slot>
-
-      </div>
-    </div>
-</div>
-</div>
+  <div>
+    <slot name="image"></slot>
+  </div>
 </template>
 
 <script>

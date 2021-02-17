@@ -2,9 +2,9 @@
     <div class="columns">
       <div class="column">
       <input v-model="searchTerm" class="input " type="text"
-			  placeholder="Search Term" />
+			  placeholder="Search" />
         </div>
-        <div class="column is-one-third">
+        <div class="column">
       <button v-on:click="searchShows()" class="button is-primary ">Search</button>
       </div>
     </div>

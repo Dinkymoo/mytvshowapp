@@ -11,7 +11,7 @@ const state = {
   selectedScore: 0
 
 }
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
   state,
   getters: {
     isAuthenticated: (state) => {

@@ -1,17 +1,16 @@
 <template>
     <div id="app" class="colums">
-      <app-header class="column"></app-header>
       <router-view></router-view>
       <app-footer  class="column"></app-footer>
     </div>
 </template>
 
 <script>
-import AppHeader from './AppHeader.vue';
+import Navbar from './Navbar.vue';
 import AppFooter from './AppFooter.vue';
 export default {
    components: {
-     'app-header': AppHeader,
+     'app-header': Navbar,
      'app-footer': AppFooter
    }
 }

@@ -1,6 +1,6 @@
 <template>
 <div class="">
-<input class="slider is-fullwidth is-success" v-on:change="updateRating($event.target.value)" step="1" min="0" max="10" value="0" type="range">
+<input class="slider" v-on:change="updateRating($event.target.value)" step="1" min="5" max="10" value="5" type="range">
 <output for="sliderWithValue">{{selectedScore}}</output>
 </div>
 </template>
@@ -29,8 +29,7 @@
 </script>
 <style lang="scss" scoped>
 .slider {
-  width:100%,
-
+  width: 70%;
 }
 </style>
 

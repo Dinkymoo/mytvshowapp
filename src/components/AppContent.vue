@@ -1,31 +1,24 @@
 <template>
   <section class="main-section section">
-    <div></div>
-    <search id="search" class="columns"></search>
+    <div class="top-section">
+    <search id="search" class="columns">
+    </search>
     <div class="columns">
-    <category class="column"></category>
-    <rating class="column"></rating>
+    <category class="column is-half"></category>
+    <rating class="column auto rating"></rating>
     </div>
-    <div class="columns" v-for="show in selectedShows['shows']" v-bind:key="show.id">
-      <show class="column" v-if="show.show">
-          <img v-if="show.show.image" slot="image" v-bind:src="show.show.image.medium"
-                alt="TV Maze" class="card-image" />
-          <router-link :to="{name: 'details', params: {id: show.id}}" slot="title" class="title is-4" target="_blank">
-          {{show.show.name}}
-           {{show.show.genres}}
-           {{show.show.rating}}
-          </router-link>
-        </show>
-        <show class="column" v-else>
-          <img v-if="show.image" slot="image" v-bind:src="show.image.medium"
-                alt="TV Maze" class="card-image" />
-          <router-link :to="{name: 'details', params: {id: show.id}}"  slot="title" class="title is-4" target="_blank">
-          {{show.name}}
-          {{show.genres}}
-          {{show.rating}}
-          </router-link>
-        </show>
-
+    </div>
+    <div class="columns shows">
+    <div v-for="show in selectedShows['shows']" v-bind:key="show.id">
+      <show>
+        <p slot="image" class="show">
+          <a href='/content/details/1' target="_blank">
+          <img class="image" v-if="show.image"  v-bind:src="show.image.medium"
+              alt="TV Maze" />
+          </a>
+        </p>
+      </show>
+    </div>
     </div>
   </section>
 </template>
@@ -44,7 +37,7 @@ export default {
       'search': Search,
       'details': Details,
       'category': Category,
-      Rating
+      'rating': Rating,
    },
     computed: {
     ... mapGetters(["selectedShows"])
@@ -65,10 +58,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-image {
-  max-width: 75%;
+.show {
+  padding: 1%;
 }
-#search {
-  padding: 2%;
+.shows {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.rating {
+ padding-left: 15%;
+}
+.top-section {
+  margin-left :4%;
 }
 </style>

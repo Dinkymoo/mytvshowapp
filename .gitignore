@@ -9,4 +9,5 @@ npm-debug.log*
 # Editor settings
 .vscode
 
+#Unit tests
 coverage/
