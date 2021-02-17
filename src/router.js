@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import AppContent from './theme/AppContent.vue'
-import Details from './theme/Details.vue'
-import Login from './theme/Login.vue'
-import NotFound from './theme/NotFound.vue'
+import AppContent from './components/AppContent.vue'
+import Details from './components/Details.vue'
+import Login from './components/Login.vue'
+import NotFound from './components/NotFound.vue'
 
 Vue.use(VueRouter)
 
 // TODO: Add lazy loading
-// const AppContent = () => System.import('./theme/AppContent.vue')
-// const Login = () => System.import('./theme/Login.vue')
-// const NotFound = () => System.import('./theme/NotFound.vue')
+// const AppContent = () => System.import('./components/AppContent.vue')
+// const Login = () => System.import('./components/Login.vue')
+// const NotFound = () => System.import('./components/NotFound.vue')
 
 export const router = new VueRouter({
   mode: 'history',
