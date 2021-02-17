@@ -1,13 +1,13 @@
-import HelloWorld from '@/components/Show.vue'
+import Show from '@/components/Show.vue'
 import { shallowMount } from '@vue/test-utils'
 
 describe('Show.vue', () => {
   it('creates  Show component', () => {
 
-    const wrapper = shallowMount(HelloWorld, {
+    const wrapper = shallowMount(Show, {
 
     })
-    expect(wrapper.getComponent.name === 'Show.vue')
+    expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
 })
