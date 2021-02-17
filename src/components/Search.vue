@@ -18,7 +18,7 @@ export default {
     searchTerm: ''
   }},
   computed: {
-    ... mapGetters(['shows'])
+    ... mapGetters(['selectedShows'])
   },
   methods: {
      ... mapActions({

@@ -6,7 +6,7 @@
     <category class="column"></category>
     <rating class="column"></rating>
     </div>
-    <div class="columns" v-for="show in shows['shows']" v-bind:key="show.id">
+    <div class="columns" v-for="show in selectedShows['shows']" v-bind:key="show.id">
       <show class="column" v-if="show.show">
           <img v-if="show.show.image" slot="image" v-bind:src="show.show.image.medium"
                 alt="TV Maze" class="card-image" />
@@ -47,7 +47,7 @@ export default {
       Rating
    },
     computed: {
-    ... mapGetters(["shows"])
+    ... mapGetters(["selectedShows"])
    },
     data() {
       return {

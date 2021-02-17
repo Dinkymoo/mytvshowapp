@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 const state = {
   isAuthenticated: false,
-  shows: {'shows': []},
+  selectedShows: {'shows': []},
   selectedGenres: {'genres': ['All']},
   selectedScore: 0
 
@@ -17,8 +17,8 @@ const store = new Vuex.Store({
     isAuthenticated: (state) => {
       return state.isAuthenticated
     },
-    shows: (state) => {
-      return state.shows
+    selectedShows: (state) => {
+      return state.selectedShows
     },
     selectedGenres: (state) => {
       return state.selectedGenres
@@ -94,7 +94,7 @@ const store = new Vuex.Store({
       state.isAuthenticated = true
     },
     updateshows (state, shows) {
-      state.shows['shows'] = shows
+      state.selectedShows['shows'] = shows
     },
     updateGenres (state, genre) {
       state.selectedGenres = { 'genres': [genre] }
@@ -112,7 +112,7 @@ if (typeof window !== 'undefined') {
     let unixTimeStamp = new Date().getTime() / 1000
     if (expiration == null && parseInt(expiration) - unixTimeStamp > 0) { store.state.isAuthenticated = true }
     appService.getShows().then((shows) => {
-      store.state.shows['shows'] = shows
+      store.state.selectedShows['shows'] = shows
     })
   })
 }
