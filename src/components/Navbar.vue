@@ -16,11 +16,7 @@
 }
 </script>
 <style lang="scss" scoped>
-$red: #f41231;
-$blue: #0075ff;
-botton .button.is-primary {
-  color: $red;
-}
+
 .container {
   text-align: left;
   padding: 22px 0;
@@ -28,7 +24,7 @@ botton .button.is-primary {
   max-width: 0;
 }
 .nav-item {
-  color: $blue;
+  color: blue;
   padding: 20px;
 }
 #menu-image {

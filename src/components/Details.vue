@@ -11,8 +11,9 @@
         </div>
         <div v-html="show.summary" class="media-content">
         </div>
-        <div v-html="show.rating.average" class="media-content">
-         </div>
+        <button v-bind="show.rating.average" class="media-content rating">
+          {{show.rating.average}}
+         </button>
          </div>
         <div v-html="show.language" class="media-content columns">
          </div>
@@ -48,5 +49,13 @@ export default {
   font-size: x-large;
   padding: 1%;
 }
-
+.card {
+  padding: 5%;
+}
+.rating {
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 100%;
+}
 </style>

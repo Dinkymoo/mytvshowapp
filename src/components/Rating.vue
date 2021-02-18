@@ -1,7 +1,7 @@
 <template>
 <div class="">
-<input class="slider" v-on:change="updateRating($event.target.value)" step="1" min="5" max="10" value="5" type="range">
-<output for="sliderWithValue">{{selectedScore}}</output>
+<input class="slider is-fullwidth is-danger" v-on:change="updateRating($event.target.value)" step="1" min="5" max="10" value="8" type="range">
+<output for="sliderWithValue"><b>Rating  {{selectedScore}}</b></output>
 </div>
 </template>
 <script>
