@@ -12,7 +12,7 @@
     <div v-for="show in selectedShows['shows']" v-bind:key="show.id">
       <show>
         <p slot="image" class="show">
-          <a href='/content/details/1' target="_blank">
+          <a v-bind:href="'/content/details/' + show.id" target="_blank">
           <img class="image" v-if="show.image"  v-bind:src="show.image.medium"
               alt="TV Maze" />
           </a>
