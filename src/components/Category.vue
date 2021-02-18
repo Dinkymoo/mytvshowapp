@@ -6,7 +6,7 @@
 <button class="idle-button is-primary category" :class="{button:selectedGenres.genres[0] === 'Thriller'}" v-on:click="toggleCategory('Thriller')">Thriller</button>
 <button class="idle-button is-primary category" :class="{button:selectedGenres.genres[0] === 'Horror'}" v-on:click="toggleCategory('Horror')">Horror</button>
 <button class="idle-button is-primary category" :class="{button:selectedGenres.genres[0] === 'Romance'}" v-on:click="toggleCategory('Romance')">Romance</button>
-
+<button class="idle-button is-primary category" :class="{button:selectedGenres.genres[0] === 'Comedy'}" v-on:click="toggleCategory('Comedy')">Comedy</button>
 </div>
 </template>
 <script>

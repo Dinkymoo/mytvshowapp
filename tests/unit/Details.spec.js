@@ -21,8 +21,7 @@ describe('Details.vue', () => {
           return {
             id: '1',
             show: {'rating': {'average': '7'}, 'image': {'medium': 'http://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg'}}}
-        }
-      })
+        } })
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 })

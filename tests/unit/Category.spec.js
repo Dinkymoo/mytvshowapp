@@ -4,8 +4,7 @@ import { getters, store } from '../../src/index.js'
 
 describe('Category.vue', () => {
   it('creates Category component', () => {
-    const wrapper = shallowMount(Category, {getters, store
-    })
+    const wrapper = shallowMount(Category, {getters, store})
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 })
