@@ -8,7 +8,7 @@ const state = {
   isAuthenticated: false,
   selectedShows: {'shows': []},
   selectedGenres: {'genres': ['All']},
-  selectedScore: 8
+  selectedScore: 7
 
 }
 export const store = new Vuex.Store({
@@ -106,7 +106,7 @@ export const store = new Vuex.Store({
 })
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMCntentLoaded', function (event) {
-    store.state.selectedScore = 8
+    store.state.selectedScore = 7
     store.state.selectedGenres = {'genres': ['All']}
     let expiration = window.localStorage.getItem('tokenExpiration')
     let unixTimeStamp = new Date().getTime() / 1000

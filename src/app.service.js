@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 axios.defaults.baseURL = 'http://api.tvmaze.com/'
+// TODO: Improve security
 // axios.interceptors.request.use(function (config) {
 //   const token = window.localStorage.getItem('token')
 //   if (token) {
