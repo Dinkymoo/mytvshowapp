@@ -8,7 +8,8 @@ const state = {
   isAuthenticated: false,
   selectedShows: {'shows': []},
   selectedGenres: {'genres': ['All']},
-  selectedScore: 7
+  selectedScore: 7,
+  selectedPage: 1
 
 }
 export const store = new Vuex.Store({
@@ -25,6 +26,9 @@ export const store = new Vuex.Store({
     },
     selectedScore: (state) => {
       return state.selectedScore
+    },
+    selectedPage: (state) => {
+      return state.selectedPage
     }
   },
   actions: {
@@ -41,11 +45,11 @@ export const store = new Vuex.Store({
           .catch((err) => reject(err))
       })
     },
-    updateshows (context, keyword) {
+    updateshows (context, keyword = undefined) {
       return new Promise((resolve, reject) => {
         let selectedShows = []
         if (keyword === null || keyword === undefined) {
-          appService.getShows()
+          appService.getShows(state.selectedPage)
             .then(shows => {
               if (state.selectedGenres.genres.indexOf('All') !== -1) {
                 shows.forEach(show => {
@@ -78,8 +82,10 @@ export const store = new Vuex.Store({
       context.commit('updateGenres', genre)
     },
     updateScore (context, score) {
-      console.log(score)
       context.commit('updateScore', score)
+    },
+    updatePage (context, page) {
+      context.commit('updatePage', page)
     }
   },
   mutations: {
@@ -101,17 +107,21 @@ export const store = new Vuex.Store({
     },
     updateScore (state, score) {
       state.selectedScore = score
+    },
+    updatePage (state, page) {
+      state.selectedPage = page
     }
   }
 })
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMCntentLoaded', function (event) {
+    store.state.selectedPage = 1
     store.state.selectedScore = 7
     store.state.selectedGenres = {'genres': ['All']}
     let expiration = window.localStorage.getItem('tokenExpiration')
     let unixTimeStamp = new Date().getTime() / 1000
     if (expiration == null && parseInt(expiration) - unixTimeStamp > 0) { store.state.isAuthenticated = true }
-    appService.getShows().then((shows) => {
+    appService.getShows(1).then((shows) => {
       store.state.selectedShows['shows'] = shows
     })
   })

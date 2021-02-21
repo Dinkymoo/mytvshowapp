@@ -10,10 +10,11 @@ axios.defaults.baseURL = 'http://api.tvmaze.com/'
 //   return config
 // })
 const appService = {
-  getShows () {
+  getShows (page) {
     return new Promise((resolve, reject) => {
-      axios.get('shows').then(
+      axios.get(`shows?page=${page}`).then(
         response => {
+          console.log(response)
           resolve(response.data)
         }).catch(response => reject(response.status))
     })

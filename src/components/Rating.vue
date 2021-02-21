@@ -29,7 +29,7 @@
 </script>
 <style lang="scss" scoped>
 .slider {
-  width: 70%;
+  width: 100%;
 }
 </style>
 

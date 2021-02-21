@@ -29,4 +29,10 @@ export default {
   }
 }
 </script>
+<style scoped>
+input {
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #3f393a;
+}
+</style>
 

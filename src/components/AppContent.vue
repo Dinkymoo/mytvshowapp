@@ -1,4 +1,5 @@
 <template>
+
   <section class="main-section section">
     <div class="top-section">
     <search id="search" class="columns">
@@ -8,7 +9,7 @@
     <rating class="column auto rating"></rating>
     </div>
     </div>
-    <div class="columns shows">
+    <div class=" shows">
     <div v-for="show in selectedShows['shows']" v-bind:key="show.id">
       <show>
         <p slot="image" class="show">
@@ -20,7 +21,26 @@
       </show>
     </div>
     </div>
-  </section>
+
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <a class="pagination-previous" title="This is the first page" v-on:click="previousPage()" disabled>Previous</a>
+  <a class="pagination-next" v-on:click="nextPage()">Next page</a>
+  <ul class="pagination-list">
+    <li>
+      <a class="pagination-link" v-if="selectedPage > 3" aria-label="Goto page" v-on:click="firstPage(undefined)">1</a>
+    </li>
+    <li>
+      <a class="pagination-link is-current" aria-label='Page ' aria-current="page">{{selectedPage}}</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page" v-on:click="updatePage(1)">{{(selectedPage + 1)}} </a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page" v-on:click="updatePage(2)">{{(selectedPage + 2)}}</a>
+    </li>
+  </ul>
+</nav>
+</section>
 </template>
 <script>
 import Show from './Show.vue';
@@ -40,19 +60,42 @@ export default {
       'rating': Rating,
    },
     computed: {
-    ... mapGetters(["selectedShows"])
+    ... mapGetters(['selectedShows', 'selectedPage'])
    },
     data() {
       return {
-        id: this.$route.params.id
+        id: this.$route.params.id,
+        page: 1
         }
     },
     methods: {
       ... mapActions({
-      updateshows : 'updateshows'})
+      updateshows : 'updateshows',
+      updatePage: 'updatePage'
+      }),
+      previousPage() {
+        if(this.page > 1) {
+          this.$store.dispatch('updatePage',this.page--)
+          this.$store.dispatch('updateshows')
+        }
+      },
+      nextPage() {
+        this.$store.dispatch('updatePage',this.page++)
+        this.$store.dispatch('updateshows')
+      },
+      firstPage() {
+        this.$store.dispatch('updatePage', 1)
+         this.$store.dispatch('updateshows')
+      },
+      updatePage(num) {
+        this.page = this.page + num
+        this.$store.dispatch('updatePage',this.page)
+          this.$store.dispatch('updateshows')
+
+      }
     },
     created()  {
-     this.$store.dispatch('updateshows',undefined)
+     this.$store.dispatch('updateshows')
     }
   }
 </script>
@@ -62,13 +105,8 @@ export default {
   padding: 1%;
 }
 .shows {
-  padding-left: 5%;
-  padding-right: 5%;
-}
-.rating {
- padding-left: 15%;
-}
-.top-section {
-  margin-left :4%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
 }
 </style>

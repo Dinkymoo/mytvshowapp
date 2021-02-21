@@ -27,8 +27,5 @@
   color: blue;
   padding: 20px;
 }
-#menu-image {
-  width: 20%;
-}
 
 </style>
