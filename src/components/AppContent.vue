@@ -22,7 +22,7 @@
     </div>
     </div>
 
-<nav class="pagination" role="navigation" aria-label="pagination">
+<nav class="pagination" role="navigation" aria-label="pagination" v-if="selectedShows['shows'].length > 14">
   <a class="pagination-previous" title="This is the first page" v-on:click="previousPage()" v-show="selectedPage > 1">Previous</a>
   <a class="pagination-next" v-on:click="nextPage()">Next page</a>
   <ul class="pagination-list">

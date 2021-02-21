@@ -38,15 +38,17 @@ export default {
 </script>
 <style lang='scss' scoped>
 .rating {
-  font-size: larger;
+  font-size: xx-large;
 }
 .column {
-padding: 3%;
+padding: 1%;
 }
 .language {
-  padding: 2%;
+  margin: 2%;
+  padding: 1%;
 }
 .columns {
-  padding: 3%;
+  margin: 1%;
+  font-size: large;
 }
 </style>
