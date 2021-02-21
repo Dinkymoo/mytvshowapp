@@ -1,6 +1,6 @@
 <template>
     <div class="columns">
-      <div class="column">
+      <div class="column is-two-thirds">
       <input v-model="searchTerm" class="input " type="text"
 			  placeholder="Search" />
         </div>
@@ -33,6 +33,9 @@ export default {
 input {
   font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: #3f393a;
+}
+button {
+  width: 100%;
 }
 </style>
 
