@@ -31,9 +31,10 @@ export default {
 </script>
 <style scoped>
 input {
-  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: "Nunito", sans-serif;;
   color: #3f393a;
   font-size: large;
+  font-weight: 300;
 }
 button {
   width: 100%;
