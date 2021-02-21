@@ -23,11 +23,11 @@
     </div>
 
 <nav class="pagination" role="navigation" aria-label="pagination">
-  <a class="pagination-previous" title="This is the first page" v-on:click="previousPage()" disabled>Previous</a>
+  <a class="pagination-previous" title="This is the first page" v-on:click="previousPage()" v-show="selectedPage > 1">Previous</a>
   <a class="pagination-next" v-on:click="nextPage()">Next page</a>
   <ul class="pagination-list">
     <li>
-      <a class="pagination-link" v-if="selectedPage > 3" aria-label="Goto page" v-on:click="firstPage(undefined)">1</a>
+      <a class="pagination-link" v-if="selectedPage > 2" aria-label="Goto page" v-on:click="firstPage(undefined)">1</a>
     </li>
     <li>
       <a class="pagination-link is-current" aria-label='Page ' aria-current="page">{{selectedPage}}</a>
@@ -65,7 +65,6 @@ export default {
     data() {
       return {
         id: this.$route.params.id,
-        page: 1
         }
     },
     methods: {
@@ -74,13 +73,13 @@ export default {
       updatePage: 'updatePage'
       }),
       previousPage() {
-        if(this.page > 1) {
-          this.$store.dispatch('updatePage',this.page--)
+        let page = this.selectedPage - 1
+          this.$store.dispatch('updatePage',page)
           this.$store.dispatch('updateshows')
-        }
       },
       nextPage() {
-        this.$store.dispatch('updatePage',this.page++)
+        let page = this.selectedPage + 1
+        this.$store.dispatch('updatePage',page)
         this.$store.dispatch('updateshows')
       },
       firstPage() {
@@ -89,7 +88,7 @@ export default {
       },
       updatePage(num) {
         this.page = this.page + num
-        this.$store.dispatch('updatePage',this.page)
+        this.$store.dispatch('updatePage',this.selectedPage)
           this.$store.dispatch('updateshows')
 
       }
@@ -111,5 +110,11 @@ export default {
 }
 .pagination {
   margin-top: 1%;
+}
+.rating {
+  margin-top: -0.3%;
+}
+.top-section {
+  margin-bottom: 1%;
 }
 </style>

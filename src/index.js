@@ -85,6 +85,9 @@ export const store = new Vuex.Store({
       context.commit('updateScore', score)
     },
     updatePage (context, page) {
+      if (page <= 1) {
+        page = 1
+      }
       context.commit('updatePage', page)
     }
   },
