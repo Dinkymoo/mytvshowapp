@@ -48,7 +48,6 @@
 
 }
 .selected {
-  border-radius: 10%;
   color:darkblue;
 }
 </style>

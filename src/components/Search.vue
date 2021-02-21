@@ -33,9 +33,11 @@ export default {
 input {
   font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: #3f393a;
+  font-size: large;
 }
 button {
   width: 100%;
+  height: 101%;
 }
 </style>
 
