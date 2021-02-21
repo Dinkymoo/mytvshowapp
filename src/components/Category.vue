@@ -22,7 +22,7 @@
       ... mapActions({
       updateshows : 'updateshows'}),
        ... mapActions({
-      updateshows : 'updatePage'})
+      updatePage : 'updatePage'})
   },
   methods:{
     toggleCategory(genre){

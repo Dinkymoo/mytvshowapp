@@ -14,7 +14,6 @@ const appService = {
     return new Promise((resolve, reject) => {
       axios.get(`shows?page=${page}`).then(
         response => {
-          console.log(response)
           resolve(response.data)
         }).catch(response => reject(response.status))
     })
