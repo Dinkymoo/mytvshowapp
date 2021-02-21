@@ -20,11 +20,14 @@
       ... mapActions({
       updateGenres : 'updateGenres'}),
       ... mapActions({
-      updateshows : 'updateshows'})
+      updateshows : 'updateshows'}),
+       ... mapActions({
+      updateshows : 'updatePage'})
   },
   methods:{
     toggleCategory(genre){
       this.$store.dispatch('updateGenres', genre)
+      this.$store.dispatch('updatePage', 0)
       this.$store.dispatch('updateshows', undefined)
      }
   }

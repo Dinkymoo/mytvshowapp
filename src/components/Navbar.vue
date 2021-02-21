@@ -2,7 +2,7 @@
   <nav class="nav">
       <div class="container">
           <router-link to="/content" class="nav-item is-tab">
-            Back to Shows
+            Back
           </router-link>
       </div>
   </nav>

@@ -9,7 +9,7 @@ const state = {
   selectedShows: {'shows': []},
   selectedGenres: {'genres': ['All']},
   selectedScore: 7,
-  selectedPage: 1
+  selectedPage: 0
 
 }
 export const store = new Vuex.Store({
@@ -56,7 +56,6 @@ export const store = new Vuex.Store({
                   if (Number.parseInt(show.rating.average) > state.selectedScore) { selectedShows.push(show) }
                 })
               } else {
-                console.log('getting selected shows')
                 shows.forEach(show => {
                   if (Number.parseInt(show.rating.average) > state.selectedScore &&
                   show.genres.some(g => state.selectedGenres.genres.indexOf(g) !== -1)) { selectedShows.push(show) }
@@ -85,9 +84,6 @@ export const store = new Vuex.Store({
       context.commit('updateScore', score)
     },
     updatePage (context, page) {
-      if (page <= 1) {
-        page = 1
-      }
       context.commit('updatePage', page)
     }
   },
@@ -118,13 +114,13 @@ export const store = new Vuex.Store({
 })
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMCntentLoaded', function (event) {
-    store.state.selectedPage = 1
+    store.state.selectedPage = 0
     store.state.selectedScore = 7
     store.state.selectedGenres = {'genres': ['All']}
     let expiration = window.localStorage.getItem('tokenExpiration')
     let unixTimeStamp = new Date().getTime() / 1000
     if (expiration == null && parseInt(expiration) - unixTimeStamp > 0) { store.state.isAuthenticated = true }
-    appService.getShows(1).then((shows) => {
+    appService.getShows(0).then((shows) => {
       store.state.selectedShows['shows'] = shows
     })
   })

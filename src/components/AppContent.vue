@@ -6,7 +6,7 @@
     </search>
     <div class="columns">
     <category class="column is-half"></category>
-    <rating class="column auto rating"></rating>
+    <rating class="column rating"></rating>
     </div>
     </div>
     <div class=" shows">
@@ -27,7 +27,7 @@
   <a class="pagination-next" v-on:click="nextPage()">Next page</a>
   <ul class="pagination-list">
     <li>
-      <a class="pagination-link" v-if="selectedPage > 2" aria-label="Goto page" v-on:click="firstPage(undefined)">1</a>
+      <a class="pagination-link" v-if="selectedPage > 1" aria-label="Goto page" v-on:click="firstPage()">0</a>
     </li>
     <li>
       <a class="pagination-link is-current" aria-label='Page ' aria-current="page">{{selectedPage}}</a>
@@ -83,7 +83,7 @@ export default {
         this.$store.dispatch('updateshows')
       },
       firstPage() {
-        this.$store.dispatch('updatePage', 1)
+        this.$store.dispatch('updatePage', 0)
          this.$store.dispatch('updateshows')
       },
       updatePage(num) {
@@ -102,11 +102,12 @@ export default {
 <style lang="scss" scoped>
 .show {
   padding: 1%;
+  width: 100%;
 }
 .shows {
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
+  justify-content: center;
 }
 .pagination {
   margin-top: 1%;

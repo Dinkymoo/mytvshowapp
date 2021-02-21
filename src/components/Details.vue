@@ -3,25 +3,17 @@
 <navbar></navbar>
 <div class="card">
   <div class="columns">
-   <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <img v-bind:src="show.image.medium"
-                alt="TV Maze" class="nav-item is-tab" />
-        </div>
-        <div v-html="show.summary" class="media-content">
-        </div>
-        <button v-bind="show.rating.average" class="media-content rating">
+    <img v-bind:src="show.image.medium" alt="TV Maze" class="column is-2"/>
+        <div v-html="show.summary" class=" column is-9">
+         </div>
+         <div v-bind="show.rating.average" class="column is-1 rating">
           {{show.rating.average}}
-         </button>
          </div>
-        <div v-html="show.language" class="media-content columns">
-         </div>
+</div>
+  </div>
+<div v-html="show.language" class="columns language"></div>
       </div>
-    </div>
-</div>
-</div>
-</div>
+
 </template>
 
 <script>
@@ -45,17 +37,16 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-.media-content {
-  font-size: x-large;
-  padding: 1%;
-}
-.card {
-  padding: 5%;
-}
 .rating {
-  background-color: green;
-  color: white;
-  border: none;
-  border-radius: 100%;
+  font-size: larger;
+}
+.column {
+padding: 3%;
+}
+.language {
+  padding: 2%;
+}
+.columns {
+  padding: 3%;
 }
 </style>
