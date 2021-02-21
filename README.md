@@ -14,21 +14,20 @@ The reason I chose Vue:
 How to run this application:
 
 1. Make sure that you have node intstalled
-2. run npm install
-3. Open the project in root folder MyVueProject
+2. Run npm install
+3. Open the project in root folder mytvshowapp
 4. Run npm start
 5. Open a browser on http://localhost:3000
 
 How to run the tests:
 
-1. Open the project in root folder MyVueProject
+1. Open the project in root folder mytvshowapp
 2. Run npx jest
 
 Future features:
-
--A login page (partially completed login included)
--Lazy loading, especially if the application expands into more pages and features
--Improved styling and layout
--More unit tests
--Selecting more than one category at a time
+1. A login page (partially completed login included)
+2. Lazy loading, especially if the application expands into more pages and features
+3. Improved styling and layout
+4. More unit tests
+5. Selecting more than one category at a time
 
