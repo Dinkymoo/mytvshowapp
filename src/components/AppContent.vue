@@ -109,4 +109,7 @@ export default {
   flex-wrap: wrap;
   text-align: center;
 }
+.pagination {
+  margin-top: 1%;
+}
 </style>
