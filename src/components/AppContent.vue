@@ -22,12 +22,12 @@
     </div>
     </div>
 
-<nav class="pagination" role="navigation" aria-label="pagination" v-if="selectedShows['shows'].length > 14">
+<nav class="pagination" role="navigation" aria-label="pagination">
   <a class="pagination-previous" title="This is the first page" v-on:click="previousPage()" v-show="selectedPage > 1">Previous</a>
   <a class="pagination-next" v-on:click="nextPage()">Next page</a>
   <ul class="pagination-list">
     <li>
-      <a class="pagination-link" v-if="selectedPage > 1" aria-label="Goto page" v-on:click="firstPage()">0</a>
+      <a class="pagination-link" v-if="selectedPage > 0" aria-label="Goto page" v-on:click="firstPage()">0</a>
     </li>
     <li>
       <a class="pagination-link is-current" aria-label='Page ' aria-current="page">{{selectedPage}}</a>
